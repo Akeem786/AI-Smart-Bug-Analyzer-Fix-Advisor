@@ -1,0 +1,9 @@
+UPLOAD_FOLDER = "uploads"
+
+VECTOR_DB = "vector_db"
+
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+
+CHUNK_SIZE = 500
+
+CHUNK_OVERLAP = 100
