@@ -53,8 +53,7 @@ AI-Smart-Bug-Analyzer-Fix-Advisor
 ### Clone Repository
 
 ```bash
-git clone https://github.com/Snehakhatry91/AI-Smart-Bug-Analyzer-Fix-Advisor
-```
+
 
 ### Backend
 
@@ -87,13 +86,3 @@ npm run dev
 - Vector Database
 - RAG Pipeline
 - Fix Recommendation Engine
-
-## Author
-
-**Sneha Khatry**
-
-B.Tech CSE (CC)Student
-
-CV Raman Global University
-
-GitHub: https://github.com/Snehakhatry91

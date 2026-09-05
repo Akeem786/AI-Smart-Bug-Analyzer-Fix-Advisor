@@ -1,0 +1,79 @@
+[
+  {
+    "id": "BUG-101",
+    "title": "NullPointerException when accessing user profile in AuthService",
+    "component": "Authentication / User Service",
+    "stack": "Java / Spring Boot",
+    "severity": "High",
+    "priority": "P1",
+    "description": "java.lang.NullPointerException: Cannot invoke 'com.example.User.getRoles()' because 'user' is null at com.example.service.AuthService.validateToken(AuthService.java:42). Occurs when expired JWT payload is decoded without DB fallback.",
+    "root_cause": "Unchecked object dereference without verifying if the user repository found an active entity.",
+    "resolution": "Add Optional<User> check and throw InvalidCredentialsException instead of allowing null propagation."
+  },
+  {
+    "id": "BUG-102",
+    "title": "PostgreSQL connection pool exhausted under concurrent load",
+    "component": "Database / Connection Pool",
+    "stack": "Python / SQLAlchemy / Asyncpg",
+    "severity": "Critical",
+    "priority": "P0",
+    "description": "sqlalchemy.exc.TimeoutError: QueuePool limit of size 10 overflow 10 reached, connection timed out, timeout 30.00. High concurrent API requests causing open connections to exceed max pool limit.",
+    "root_cause": "Database sessions not closed in exception handlers, resulting in connection leaks under high traffic.",
+    "resolution": "Wrap database operations in context managers (async with get_session()), increase pool_size to 20, max_overflow to 20, and set pool_recycle to 1800s."
+  },
+  {
+    "id": "BUG-103",
+    "title": "React Uncaught TypeError: Cannot read properties of undefined (reading 'map')",
+    "component": "Frontend / User Dashboard",
+    "stack": "React / JavaScript",
+    "severity": "Medium",
+    "priority": "P2",
+    "description": "TypeError: Cannot read properties of undefined (reading 'map') at UserList.render (UserList.jsx:18). Triggered when API response returns empty body before items array initializes.",
+    "root_cause": "Component tries to iterate over initial state before asynchronous API fetch resolves or when payload format is unexpected.",
+    "resolution": "Use optional chaining (items?.map(...)) and provide a default fallback value: (items || []).map(...), with skeleton loading states."
+  },
+  {
+    "id": "BUG-104",
+    "title": "Out of Memory: Python worker killed by SIGKILL (OOMKilled)",
+    "component": "Background Processing / Celery",
+    "stack": "Python / Celery / Docker",
+    "severity": "Critical",
+    "priority": "P0",
+    "description": "Process terminated by Linux kernel OOM-killer. Worker memory exceeded container cgroup limit of 2GB during batch PDF report generation.",
+    "root_cause": "Full dataset loaded into memory simultaneously instead of streaming or chunking large document batches.",
+    "resolution": "Implement generator-based batch processing, invoke gc.collect() after heavy cycles, and configure celery worker_max_memory_per_child."
+  },
+  {
+    "id": "BUG-105",
+    "title": "CORS policy blocked preflight OPTIONS request",
+    "component": "API Gateway / Security",
+    "stack": "FastAPI / Starlette",
+    "severity": "High",
+    "priority": "P1",
+    "description": "Access to XMLHttpRequest at 'http://api.domain.com' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present.",
+    "root_cause": "CORSMiddleware not configured or origin domain not explicitly allowed in CORS allow_origins list.",
+    "resolution": "Add CORSMiddleware in FastAPI with allow_origins=['http://localhost:3000'], allow_credentials=True, allow_methods=['*'], allow_headers=['*']."
+  },
+  {
+    "id": "BUG-106",
+    "title": "IndexError: list index out of range in CSV parser",
+    "component": "Data Ingestion / File Parser",
+    "stack": "Python / Pandas",
+    "severity": "Medium",
+    "priority": "P2",
+    "description": "IndexError: list index out of range at parse_row(importer.py:87). File containing trailing empty rows or malformed delimiters crashes the pipeline.",
+    "root_cause": "Direct index access row[4] without checking len(row) >= 5.",
+    "resolution": "Validate row length prior to accessing column indices or use dict-based reader (csv.DictReader) with default values."
+  },
+  {
+    "id": "BUG-107",
+    "title": "HTTP 502 Bad Gateway: upstream server timeout",
+    "component": "Reverse Proxy / Nginx",
+    "stack": "Nginx / Node.js Express",
+    "severity": "High",
+    "priority": "P1",
+    "description": "Nginx 502 Bad Gateway: 110: Connection timed out while reading response header from upstream server at unix:/run/app.sock.",
+    "root_cause": "Long-running report export blocking Node.js event loop causing upstream proxy timeout.",
+    "resolution": "Offload long-running report calculations to background task queue and increase proxy_read_timeout in Nginx."
+  }
+]

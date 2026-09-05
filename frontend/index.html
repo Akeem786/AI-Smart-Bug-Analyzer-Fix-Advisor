@@ -2,9 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <title>AI Smart Bug Analyzer & Fix Advisor | Defect Triage & Remediation Engine</title>
+    <meta name="description" content="AI-powered software defect triage, stack trace analyzer, root cause investigator, and remediation advisor built with FastAPI and React." />
+    
+    <!-- Preload local modern Inter font files -->
+    <link rel="preload" href="/fonts/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Inter-SemiBold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Inter-Bold.ttf" as="font" type="font/ttf" crossorigin />
+
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url('/fonts/Inter-Regular.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-display: block;
+        src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url('/fonts/Inter-Bold.ttf') format('truetype');
+      }
+
+      html,
+      body,
+      #root,
+      #app,
+      button,
+      input,
+      textarea,
+      select,
+      option,
+      label,
+      p,
+      span,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      a,
+      li,
+      ul,
+      ol,
+      form,
+      header,
+      main,
+      footer,
+      section,
+      article,
+      aside,
+      pre,
+      code,
+      .bug-textarea,
+      #bug-report-input {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+      }
+
+      ::placeholder,
+      ::-webkit-input-placeholder,
+      ::-moz-placeholder,
+      :-ms-input-placeholder,
+      .bug-textarea::placeholder,
+      #bug-report-input::placeholder,
+      textarea::placeholder,
+      input::placeholder {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
