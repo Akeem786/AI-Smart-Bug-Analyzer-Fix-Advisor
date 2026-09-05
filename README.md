@@ -1,4 +1,5 @@
-# 🛡️ AI Log Diagnostic & Automated Remediation System
+# 🛡️AI-Smart-Bug-Analyzer-Fix-Advisor
+
 
 <div align="center">
 
